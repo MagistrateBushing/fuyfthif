@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Информатика — Интерактивная система
+Comment=Интерактивная система поддержки курса «Информатика» для 4 курса
+Exec=xdg-open %k/../index.html
+Icon=accessories-text-editor
+Terminal=false
+Type=Application
+Categories=Education;
