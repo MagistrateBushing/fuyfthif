@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информатика — Интерактивный курс</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h2>Информатика</h2>
+            <span class="subtitle">Интерактивный курс</span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="#" class="nav-link active" data-section="home"><span class="nav-icon">🏠</span> Главная</a></li>
+            <li><a href="#" class="nav-link" data-section="number-systems"><span class="nav-icon">🔢</span> Системы счисления</a></li>
+            <li><a href="#" class="nav-link" data-section="logic"><span class="nav-icon">⚡</span> Логические операции</a></li>
+            <li><a href="#" class="nav-link" data-section="algorithms"><span class="nav-icon">📊</span> Алгоритмы</a></li>
+            <li><a href="#" class="nav-link" data-section="encoding"><span class="nav-icon">📝</span> Кодирование информации</a></li>
+            <li><a href="#" class="nav-link" data-section="architecture"><span class="nav-icon">🖥️</span> Архитектура ЭВМ</a></li>
+            <li><a href="#" class="nav-link" data-section="quiz"><span class="nav-icon">✏️</span> Тесты</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="progress-block">
+                <span>Прогресс курса</span>
+                <div class="progress-bar"><div id="course-progress" class="progress-fill" style="width:0%"></div></div>
+                <span id="progress-text">0%</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile header -->
+    <header id="mobile-header">
+        <button id="menu-toggle" aria-label="Меню">☰</button>
+        <h2>Информатика</h2>
+    </header>
+
+    <!-- Main content -->
+    <main id="content">
+
+        <!-- HOME -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>Добро пожаловать в курс<br><span class="accent">«Информатика»</span></h1>
+                <p class="hero-sub">Интерактивная система для изучения основ информатики. Выберите тему, чтобы начать обучение.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card" data-goto="number-systems">
+                    <div class="card-icon">🔢</div>
+                    <h3>Системы счисления</h3>
+                    <p>Двоичная, восьмеричная, десятичная и шестнадцатеричная системы. Перевод чисел.</p>
+                </div>
+                <div class="card" data-goto="logic">
+                    <div class="card-icon">⚡</div>
+                    <h3>Логические операции</h3>
+                    <p>AND, OR, NOT, XOR. Таблицы истинности и логические выражения.</p>
+                </div>
+                <div class="card" data-goto="algorithms">
+                    <div class="card-icon">📊</div>
+                    <h3>Алгоритмы</h3>
+                    <p>Виды алгоритмов, блок-схемы, визуализация сортировок.</p>
+                </div>
+                <div class="card" data-goto="encoding">
+                    <div class="card-icon">📝</div>
+                    <h3>Кодирование информации</h3>
+                    <p>ASCII, Unicode, кодирование текста, изображений и звука.</p>
+                </div>
+                <div class="card" data-goto="architecture">
+                    <div class="card-icon">🖥️</div>
+                    <h3>Архитектура ЭВМ</h3>
+                    <p>Архитектура фон Неймана, процессор, память, устройства ввода/вывода.</p>
+                </div>
+                <div class="card" data-goto="quiz">
+                    <div class="card-icon">✏️</div>
+                    <h3>Тесты</h3>
+                    <p>Проверьте свои знания по каждому разделу курса.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUMBER SYSTEMS -->
+        <section id="number-systems" class="section">
+            <h1>Системы счисления</h1>
+            <div class="theory-block">
+                <h2>Теория</h2>
+                <p><strong>Система счисления</strong> — это способ записи чисел с помощью определённого набора символов (цифр).</p>
+                <div class="info-box">
+                    <h3>Позиционные системы счисления</h3>
+                    <table class="info-table">
+                        <thead><tr><th>Система</th><th>Основание</th><th>Цифры</th><th>Пример</th></tr></thead>
+                        <tbody>
+                            <tr><td>Двоичная</td><td>2</td><td>0, 1</td><td>1010₂ = 10₁₀</td></tr>
+                            <tr><td>Восьмеричная</td><td>8</td><td>0–7</td><td>12₈ = 10₁₀</td></tr>
+                            <tr><td>Десятичная</td><td>10</td><td>0–9</td><td>10₁₀</td></tr>
+                            <tr><td>Шестнадцатеричная</td><td>16</td><td>0–9, A–F</td><td>A₁₆ = 10₁₀</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>Перевод из любой системы в десятичную</h3>
+                <p>Каждая цифра умножается на основание системы в степени, равной её позиции (справа налево, начиная с 0):</p>
+                <div class="formula">1010₂ = 1·2³ + 0·2² + 1·2¹ + 0·2⁰ = 8 + 0 + 2 + 0 = 10₁₀</div>
+                <h3>Перевод из десятичной системы</h3>
+                <p>Число делится на основание целевой системы. Остатки от деления записываются в обратном порядке:</p>
+                <div class="formula">10₁₀ → 10 ÷ 2 = 5 (ост. 0), 5 ÷ 2 = 2 (ост. 1), 2 ÷ 2 = 1 (ост. 0), 1 ÷ 2 = 0 (ост. 1) → 1010₂</div>
+            </div>
+
+            <div class="interactive-block">
+                <h2>Конвертер систем счисления</h2>
+                <div class="converter">
+                    <div class="converter-row">
+                        <label for="conv-input">Введите число:</label>
+                        <input type="text" id="conv-input" placeholder="Например: 255" autocomplete="off">
+                    </div>
+                    <div class="converter-row">
+                        <label for="conv-from">Из системы:</label>
+                        <select id="conv-from">
+                            <option value="2">Двоичная (2)</option>
+                            <option value="8">Восьмеричная (8)</option>
+                            <option value="10" selected>Десятичная (10)</option>
+                            <option value="16">Шестнадцатеричная (16)</option>
+                        </select>
+                    </div>
+                    <div class="converter-results" id="conv-results"></div>
+                </div>
+            </div>
+
+            <div class="interactive-block">
+                <h2>Практика: Переведите число</h2>
+                <div id="ns-practice">
+                    <div id="ns-question" class="practice-question"></div>
+                    <input type="text" id="ns-answer" placeholder="Ваш ответ" autocomplete="off">
+                    <div class="btn-row">
+                        <button id="ns-check" class="btn btn-primary">Проверить</button>
+                        <button id="ns-next" class="btn btn-secondary">Следующее задание</button>
+                    </div>
+                    <div id="ns-feedback" class="feedback"></div>
+                </div>
+            </div>
+            <button class="btn btn-complete" data-topic="number-systems">Отметить тему как изученную</button>
+        </section>
+
+        <!-- LOGIC -->
+        <section id="logic" class="section">
+            <h1>Логические операции</h1>
+            <div class="theory-block">
+                <h2>Теория</h2>
+                <p><strong>Алгебра логики (булева алгебра)</strong> — раздел математики, изучающий операции над логическими значениями.</p>
+                <p>Логические переменные принимают два значения: <strong>ИСТИНА (1)</strong> и <strong>ЛОЖЬ (0)</strong>.</p>
+
+                <div class="info-box">
+                    <h3>Основные операции</h3>
+                    <table class="info-table">
+                        <thead><tr><th>Операция</th><th>Обозначение</th><th>Описание</th></tr></thead>
+                        <tbody>
+                            <tr><td>И (AND)</td><td>A ∧ B</td><td>Истина, только если оба операнда истинны</td></tr>
+                            <tr><td>ИЛИ (OR)</td><td>A ∨ B</td><td>Истина, если хотя бы один операнд истинен</td></tr>
+                            <tr><td>НЕ (NOT)</td><td>¬A</td><td>Инверсия: меняет значение на противоположное</td></tr>
+                            <tr><td>Исключающее ИЛИ (XOR)</td><td>A ⊕ B</td><td>Истина, если операнды различны</td></tr>
+                            <tr><td>Импликация</td><td>A → B</td><td>Ложь, только если A истинно, а B ложно</td></tr>
+                            <tr><td>Эквивалентность</td><td>A ↔ B</td><td>Истина, если оба операнда равны</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Законы алгебры логики</h3>
+                <div class="info-box">
+                    <ul class="laws-list">
+                        <li><strong>Коммутативный:</strong> A ∧ B = B ∧ A; A ∨ B = B ∨ A</li>
+                        <li><strong>Ассоциативный:</strong> (A ∧ B) ∧ C = A ∧ (B ∧ C)</li>
+                        <li><strong>Дистрибутивный:</strong> A ∧ (B ∨ C) = (A ∧ B) ∨ (A ∧ C)</li>
+                        <li><strong>Закон де Моргана:</strong> ¬(A ∧ B) = ¬A ∨ ¬B; ¬(A ∨ B) = ¬A ∧ ¬B</li>
+                        <li><strong>Идемпотентность:</strong> A ∧ A = A; A ∨ A = A</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="interactive-block">
+                <h2>Построитель таблиц истинности</h2>
+                <p>Введите логическое выражение, используя переменные (A, B, C) и операции:</p>
+                <div class="logic-help">
+                    <code>&amp;</code> — И (AND), <code>|</code> — ИЛИ (OR), <code>!</code> — НЕ (NOT), <code>^</code> — XOR, <code>()</code> — скобки
+                </div>
+                <div class="converter-row">
+                    <input type="text" id="logic-expr" placeholder="Например: (A & B) | !C" autocomplete="off">
+                    <button id="logic-build" class="btn btn-primary">Построить</button>
+                </div>
+                <div id="logic-table-container"></div>
+            </div>
+
+            <div class="interactive-block">
+                <h2>Интерактивный симулятор логических вентилей</h2>
+                <div class="gate-simulator">
+                    <div class="gate-inputs">
+                        <label>Вход A: <input type="checkbox" id="gate-a"> <span id="gate-a-val">0</span></label>
+                        <label>Вход B: <input type="checkbox" id="gate-b"> <span id="gate-b-val">0</span></label>
+                    </div>
+                    <div class="gate-select">
+                        <label>Операция:</label>
+                        <select id="gate-op">
+                            <option value="and">AND (И)</option>
+                            <option value="or">OR (ИЛИ)</option>
+                            <option value="not">NOT (НЕ A)</option>
+                            <option value="xor">XOR (Искл. ИЛИ)</option>
+                            <option value="nand">NAND (И-НЕ)</option>
+                            <option value="nor">NOR (ИЛИ-НЕ)</option>
+                        </select>
+                    </div>
+                    <div class="gate-output">
+                        <span>Результат:</span>
+                        <span id="gate-result" class="gate-result-value">0</span>
+                    </div>
+                    <div id="gate-diagram" class="gate-diagram"></div>
+                </div>
+            </div>
+            <button class="btn btn-complete" data-topic="logic">Отметить тему как изученную</button>
+        </section>
+
+        <!-- ALGORITHMS -->
+        <section id="algorithms" class="section">
+            <h1>Алгоритмы</h1>
+            <div class="theory-block">
+                <h2>Теория</h2>
+                <p><strong>Алгоритм</strong> — конечная последовательность точных инструкций, определяющая процесс решения задачи.</p>
+
+                <div class="info-box">
+                    <h3>Свойства алгоритма</h3>
+                    <ul class="laws-list">
+                        <li><strong>Дискретность</strong> — алгоритм состоит из отдельных шагов</li>
+                        <li><strong>Определённость</strong> — каждый шаг однозначен</li>
+                        <li><strong>Результативность</strong> — алгоритм завершается за конечное число шагов</li>
+                        <li><strong>Массовость</strong> — применим к различным входным данным</li>
+                        <li><strong>Понятность</strong> — исполнитель понимает каждый шаг</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>Виды алгоритмов</h3>
+                    <ul class="laws-list">
+                        <li><strong>Линейный</strong> — последовательное выполнение команд</li>
+                        <li><strong>Разветвляющийся</strong> — содержит условие (если-то-иначе)</li>
+                        <li><strong>Циклический</strong> — повторение действий (цикл с условием, со счётчиком)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>Элементы блок-схем</h3>
+                    <div class="flowchart-symbols">
+                        <div class="fc-symbol"><div class="fc-terminator"></div><span>Начало / Конец</span></div>
+                        <div class="fc-symbol"><div class="fc-process"></div><span>Действие</span></div>
+                        <div class="fc-symbol"><div class="fc-decision"></div><span>Условие</span></div>
+                        <div class="fc-symbol"><div class="fc-io"></div><span>Ввод / Вывод</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-block">
+                <h2>Визуализация сортировок</h2>
+                <div class="sort-controls">
+                    <select id="sort-algo">
+                        <option value="bubble">Пузырьковая сортировка</option>
+                        <option value="selection">Сортировка выбором</option>
+                        <option value="insertion">Сортировка вставками</option>
+                    </select>
+                    <button id="sort-generate" class="btn btn-secondary">Новый массив</button>
+                    <button id="sort-start" class="btn btn-primary">Запустить</button>
+                    <label>Скорость: <input type="range" id="sort-speed" min="1" max="100" value="50"></label>
+                </div>
+                <div id="sort-info" class="sort-info"></div>
+                <div id="sort-canvas" class="sort-canvas"></div>
+                <div id="sort-stats" class="sort-stats"></div>
+            </div>
+            <button class="btn btn-complete" data-topic="algorithms">Отметить тему как изученную</button>
+        </section>
+
+        <!-- ENCODING -->
+        <section id="encoding" class="section">
+            <h1>Кодирование информации</h1>
+            <div class="theory-block">
+                <h2>Теория</h2>
+                <p>Вся информация в компьютере представлена в виде <strong>двоичного кода</strong> — последовательности нулей и единиц (битов).</p>
+
+                <div class="info-box">
+                    <h3>Единицы измерения информации</h3>
+                    <table class="info-table">
+                        <thead><tr><th>Единица</th><th>Размер</th></tr></thead>
+                        <tbody>
+                            <tr><td>1 бит</td><td>0 или 1</td></tr>
+                            <tr><td>1 байт</td><td>8 бит</td></tr>
+                            <tr><td>1 Кбайт</td><td>1024 байт</td></tr>
+                            <tr><td>1 Мбайт</td><td>1024 Кбайт</td></tr>
+                            <tr><td>1 Гбайт</td><td>1024 Мбайт</td></tr>
+                            <tr><td>1 Тбайт</td><td>1024 Гбайт</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Кодирование текста</h3>
+                <p><strong>ASCII</strong> — стандартная кодировка, использует 7 бит (128 символов). Расширенная ASCII — 8 бит (256 символов).</p>
+                <p><strong>Unicode (UTF-8)</strong> — универсальная кодировка, поддерживает все языки мира. Символ может занимать от 1 до 4 байт.</p>
+
+                <h3>Кодирование изображений</h3>
+                <p>Изображение состоит из <strong>пикселей</strong>. Каждый пиксель кодируется определённым числом бит (глубина цвета).</p>
+                <div class="formula">Размер изображения = Ширина × Высота × Глубина цвета</div>
+
+                <h3>Кодирование звука</h3>
+                <p>Звук кодируется путём <strong>дискретизации</strong> — измерения амплитуды через равные промежутки времени.</p>
+                <div class="formula">Размер звукового файла = Частота дискретизации × Разрядность × Время × Каналы</div>
+            </div>
+
+            <div class="interactive-block">
+                <h2>Кодировщик текста</h2>
+                <div class="converter-row">
+                    <label for="enc-input">Введите текст:</label>
+                    <input type="text" id="enc-input" placeholder="Hello!" autocomplete="off">
+                </div>
+                <div id="enc-results" class="enc-results"></div>
+            </div>
+
+            <div class="interactive-block">
+                <h2>Калькулятор объёма информации</h2>
+                <div class="calc-grid">
+                    <div class="calc-section">
+                        <h3>Изображение</h3>
+                        <label>Ширина (пикс.): <input type="number" id="img-w" value="1920" min="1"></label>
+                        <label>Высота (пикс.): <input type="number" id="img-h" value="1080" min="1"></label>
+                        <label>Глубина цвета (бит): 
+                            <select id="img-depth">
+                                <option value="1">1 (ч/б)</option>
+                                <option value="8">8 (256 цветов)</option>
+                                <option value="16">16 (High Color)</option>
+                                <option value="24" selected>24 (True Color)</option>
+                                <option value="32">32 (с альфа-каналом)</option>
+                            </select>
+                        </label>
+                        <div id="img-result" class="calc-result"></div>
+                    </div>
+                    <div class="calc-section">
+                        <h3>Звук</h3>
+                        <label>Частота (Гц): <input type="number" id="snd-freq" value="44100" min="1"></label>
+                        <label>Разрядность (бит): 
+                            <select id="snd-bits">
+                                <option value="8">8</option>
+                                <option value="16" selected>16</option>
+                                <option value="24">24</option>
+                            </select>
+                        </label>
+                        <label>Каналы: 
+                            <select id="snd-channels">
+                                <option value="1">Моно (1)</option>
+                                <option value="2" selected>Стерео (2)</option>
+                            </select>
+                        </label>
+                        <label>Длительность (сек): <input type="number" id="snd-duration" value="60" min="1"></label>
+                        <div id="snd-result" class="calc-result"></div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-complete" data-topic="encoding">Отметить тему как изученную</button>
+        </section>
+
+        <!-- ARCHITECTURE -->
+        <section id="architecture" class="section">
+            <h1>Архитектура ЭВМ</h1>
+            <div class="theory-block">
+                <h2>Архитектура фон Неймана</h2>
+                <p>Современные компьютеры основаны на принципах, сформулированных <strong>Джоном фон Нейманом</strong> в 1945 году:</p>
+                <div class="info-box">
+                    <ul class="laws-list">
+                        <li><strong>Принцип двоичного кодирования</strong> — вся информация в двоичном виде</li>
+                        <li><strong>Принцип программного управления</strong> — программа хранится в памяти</li>
+                        <li><strong>Принцип однородности памяти</strong> — данные и команды хранятся вместе</li>
+                        <li><strong>Принцип адресности</strong> — каждая ячейка памяти имеет адрес</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="interactive-block">
+                <h2>Интерактивная схема компьютера</h2>
+                <p>Нажмите на компонент, чтобы узнать о нём подробнее:</p>
+                <div class="arch-diagram">
+                    <div class="arch-component" data-comp="cpu" id="arch-cpu">
+                        <div class="comp-inner">
+                            <strong>ЦП (CPU)</strong>
+                            <div class="cpu-parts">
+                                <span class="cpu-part" data-comp="alu">АЛУ</span>
+                                <span class="cpu-part" data-comp="cu">УУ</span>
+                                <span class="cpu-part" data-comp="registers">Регистры</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arch-bus">⬍ Системная шина ⬍</div>
+                    <div class="arch-row">
+                        <div class="arch-component" data-comp="ram">
+                            <div class="comp-inner">
+                                <strong>ОЗУ (RAM)</strong>
+                                <span>Оперативная память</span>
+                            </div>
+                        </div>
+                        <div class="arch-component" data-comp="rom">
+                            <div class="comp-inner">
+                                <strong>ПЗУ (ROM)</strong>
+                                <span>Постоянная память</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arch-bus">⬍ Шина данных ⬍</div>
+                    <div class="arch-row">
+                        <div class="arch-component" data-comp="input">
+                            <div class="comp-inner">
+                                <strong>Устройства ввода</strong>
+                                <span>Клавиатура, мышь...</span>
+                            </div>
+                        </div>
+                        <div class="arch-component" data-comp="output">
+                            <div class="comp-inner">
+                                <strong>Устройства вывода</strong>
+                                <span>Монитор, принтер...</span>
+                            </div>
+                        </div>
+                        <div class="arch-component" data-comp="storage">
+                            <div class="comp-inner">
+                                <strong>ВЗУ</strong>
+                                <span>HDD, SSD, Flash</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="arch-info" class="arch-info">
+                    <p>Нажмите на любой компонент схемы, чтобы узнать о нём подробнее.</p>
+                </div>
+            </div>
+            <button class="btn btn-complete" data-topic="architecture">Отметить тему как изученную</button>
+        </section>
+
+        <!-- QUIZ -->
+        <section id="quiz" class="section">
+            <h1>Тесты</h1>
+            <p>Проверьте свои знания по каждому разделу курса.</p>
+            <div class="quiz-selector">
+                <button class="btn btn-primary quiz-topic-btn" data-quiz="ns">Системы счисления</button>
+                <button class="btn btn-primary quiz-topic-btn" data-quiz="logic">Логические операции</button>
+                <button class="btn btn-primary quiz-topic-btn" data-quiz="algo">Алгоритмы</button>
+                <button class="btn btn-primary quiz-topic-btn" data-quiz="enc">Кодирование</button>
+                <button class="btn btn-primary quiz-topic-btn" data-quiz="arch">Архитектура ЭВМ</button>
+            </div>
+            <div id="quiz-area" class="quiz-area" style="display:none">
+                <div id="quiz-progress" class="quiz-progress"></div>
+                <div id="quiz-question" class="quiz-question"></div>
+                <div id="quiz-options" class="quiz-options"></div>
+                <div id="quiz-feedback" class="feedback"></div>
+                <div class="btn-row">
+                    <button id="quiz-next" class="btn btn-primary" style="display:none">Следующий вопрос</button>
+                </div>
+            </div>
+            <div id="quiz-result" class="quiz-result" style="display:none"></div>
+        </section>
+
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
