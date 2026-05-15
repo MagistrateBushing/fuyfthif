@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>РМ СТО ВЭД — Рабочее место специалиста</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+</head>
+<body>
+    <div id="app">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h2>РМ СТО ВЭД</h2>
+                <p class="subtitle">Специалист таможенного оформления</p>
+            </div>
+            <div class="nav-section">
+                <button class="nav-btn active" data-page="home">
+                    <span class="nav-icon">🏠</span> Главная
+                </button>
+                <button class="nav-btn" data-page="lectures">
+                    <span class="nav-icon">📖</span> Материалы
+                </button>
+                <button class="nav-btn" data-page="tests">
+                    <span class="nav-icon">✏️</span> Тесты
+                </button>
+                <button class="nav-btn" data-page="progress">
+                    <span class="nav-icon">📊</span> Прогресс
+                </button>
+            </div>
+            <div class="sidebar-footer">
+                <p>ВЭД | 2025-2026</p>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <main id="content">
+            <!-- Home page -->
+            <div id="page-home" class="page active">
+                <div class="hero">
+                    <h1>Добро пожаловать!</h1>
+                    <p class="hero-subtitle">Рабочее место специалиста таможенного оформления ВЭД</p>
+                    <p class="hero-desc">Интерактивная система обучения по внешнеэкономической деятельности и таможенному оформлению</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-lectures">6</div>
+                        <div class="stat-label">Разделов</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-tests">6</div>
+                        <div class="stat-label">Тестов</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-completed">0</div>
+                        <div class="stat-label">Пройдено</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-score">0%</div>
+                        <div class="stat-label">Средний балл</div>
+                    </div>
+                </div>
+                <div class="quick-start">
+                    <h2>Быстрый старт</h2>
+                    <div class="quick-cards">
+                        <div class="quick-card" onclick="App.navigateTo('lectures')">
+                            <span class="quick-icon">📖</span>
+                            <h3>Начать обучение</h3>
+                            <p>Перейти к учебным материалам</p>
+                        </div>
+                        <div class="quick-card" onclick="App.navigateTo('tests')">
+                            <span class="quick-icon">✏️</span>
+                            <h3>Пройти тест</h3>
+                            <p>Проверить свои знания</p>
+                        </div>
+                        <div class="quick-card" onclick="App.navigateTo('progress')">
+                            <span class="quick-icon">📊</span>
+                            <h3>Мой прогресс</h3>
+                            <p>Отслеживание результатов</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lectures page -->
+            <div id="page-lectures" class="page">
+                <h1>Учебные материалы</h1>
+                <p class="page-desc">Выберите раздел для изучения</p>
+                <div id="lectures-list" class="cards-grid"></div>
+            </div>
+
+            <!-- Lecture viewer -->
+            <div id="page-lecture-view" class="page">
+                <button class="back-btn" onclick="App.navigateTo('lectures')">&larr; Назад к материалам</button>
+                <div id="lecture-content" class="lecture-content"></div>
+                <div class="lecture-nav">
+                    <button id="btn-mark-read" class="btn btn-success" onclick="App.markLectureRead()">Отметить как изученное</button>
+                </div>
+            </div>
+
+            <!-- Tests page -->
+            <div id="page-tests" class="page">
+                <h1>Тестирование</h1>
+                <p class="page-desc">Выберите тест для проверки знаний</p>
+                <div id="tests-list" class="cards-grid"></div>
+            </div>
+
+            <!-- Test taking page -->
+            <div id="page-test-take" class="page">
+                <button class="back-btn" onclick="App.navigateTo('tests')">&larr; Назад к тестам</button>
+                <div id="test-header" class="test-header"></div>
+                <div id="test-question" class="test-question"></div>
+                <div id="test-options" class="test-options"></div>
+                <div id="test-explanation" class="test-explanation" style="display:none;"></div>
+                <div id="test-nav" class="test-nav"></div>
+            </div>
+
+            <!-- Test results page -->
+            <div id="page-test-result" class="page">
+                <div id="test-result-content"></div>
+            </div>
+
+            <!-- Progress page -->
+            <div id="page-progress" class="page">
+                <h1>Мой прогресс</h1>
+                <p class="page-desc">Отслеживание результатов обучения</p>
+                <div id="progress-content"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/lectures.js"></script>
+    <script src="js/tests.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => App.init());
+    </script>
+</body>
+</html>
