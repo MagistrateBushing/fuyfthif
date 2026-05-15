@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=РМ СТО ВЭД — Рабочее место специалиста
+Comment=Интерактивная система обучения специалиста таможенного оформления ВЭД
+Exec=xdg-open %k/../index.html
+Icon=accessories-text-editor
+Terminal=false
+Type=Application
+Categories=Education;
